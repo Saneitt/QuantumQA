@@ -1,0 +1,262 @@
+E-SHOP UI/UX STYLE GUIDE
+========================
+
+COLOR PALETTE
+-------------
+
+Primary Colors:
+- Primary Blue: #3498db (Add to Cart buttons)
+- Primary Blue Hover: #2980b9
+- Success Green: #2ecc71 (Pay Now button, prices, success messages)
+- Success Green Hover: #27ae60
+- Discount Orange: #e67e22 (Apply Discount button)
+- Discount Orange Hover: #d35400
+
+Secondary Colors:
+- Error Red: #e74c3c (validation error messages)
+- Text Dark: #333 (headings)
+- Text Medium: #555 (labels)
+- Background Light: #f5f5f5 (page background)
+- Background White: #ffffff (container background)
+- Background Gray: #f9f9f9 (cart summary background)
+- Border Light: #ddd
+- Border Medium: #bdc3c7
+
+TYPOGRAPHY
+----------
+
+Font Family:
+- Primary: Arial, sans-serif (entire application)
+
+Font Sizes:
+- Page Title (h1): Default heading size
+- Section Titles (h2): Default heading size with 20px bottom margin
+- Product Prices: 24px, bold, green (#2ecc71)
+- Total Price: 28px, bold, green (#2ecc71)
+- Button Text: 16px (standard buttons), 18px (Pay Now button)
+- Body Text: 14px (inputs and general text)
+- Error Text: 12px, red (#e74c3c)
+- Success Message: 24px, bold, white
+
+BUTTON SPECIFICATIONS
+---------------------
+
+Add to Cart Buttons:
+- Width: 100%
+- Padding: 10px
+- Background: #3498db (blue)
+- Text Color: White
+- Border: None
+- Border Radius: 5px
+- Font Size: 16px
+- Cursor: Pointer
+- Hover State: #2980b9 (darker blue)
+
+Apply Discount Button:
+- Padding: 10px 20px
+- Background: #e67e22 (orange)
+- Text Color: White
+- Border: None
+- Border Radius: 3px
+- Cursor: Pointer
+- Hover State: #d35400 (darker orange)
+
+Pay Now Button:
+- Width: 100%
+- Padding: 15px
+- Background: #2ecc71 (green) <-- CRITICAL REQUIREMENT
+- Text Color: White
+- Border: None
+- Border Radius: 5px
+- Font Size: 18px
+- Font Weight: Bold
+- Cursor: Pointer
+- Hover State: #27ae60 (darker green)
+
+FORM VALIDATION ERROR DISPLAY
+------------------------------
+
+Error Message Styling:
+- Color: #e74c3c (red) <-- CRITICAL REQUIREMENT
+- Font Size: 12px
+- Margin Top: 5px
+- Display: none (by default)
+- Display: block (when validation fails)
+
+Error Display Rules:
+- Errors must appear directly below the invalid field
+- Error text must be displayed in red (#e74c3c)
+- Error messages shown one at a time per field
+- Error messages hidden when validation passes
+- All errors cleared before new validation attempt
+
+Specific Error Messages:
+- Name field: "Name is required"
+- Email field: "Please enter a valid email address"
+- Address field: "Address is required"
+
+INPUT FIELD STYLING
+-------------------
+
+Text Inputs:
+- Width: 100%
+- Padding: 10px
+- Border: 1px solid #ddd
+- Border Radius: 3px
+- Font Size: 14px
+
+Quantity Inputs:
+- Width: 60px
+- Padding: 5px
+- Text Align: Center
+
+Discount Code Input:
+- Padding: 10px
+- Width: 200px
+- Margin Right: 10px
+- Border: 1px solid #bdc3c7
+- Border Radius: 3px
+
+LAYOUT & SPACING
+----------------
+
+Container:
+- Max Width: 1200px
+- Margin: 0 auto
+- Background: White
+- Padding: 30px
+- Border Radius: 8px
+- Box Shadow: 0 2px 10px rgba(0,0,0,0.1)
+
+Product Grid:
+- Display: Grid
+- Grid Template Columns: repeat(auto-fit, minmax(250px, 1fr))
+- Gap: 20px
+- Margin Bottom: 40px
+
+Form Groups:
+- Margin Bottom: 15px
+
+Section Spacing:
+- Margin Bottom: 30px (form sections)
+- Margin Bottom: 40px (product section)
+
+INTERACTIVE ELEMENTS
+--------------------
+
+Radio Buttons:
+- Margin Right: 8px (between radio and label)
+- Margin: 8px 0 (between options)
+- Margin: 10px 0 (radio group)
+
+Cart Item Display:
+- Display: Flex
+- Justify Content: Space Between
+- Align Items: Center
+- Padding: 10px 0
+- Border Bottom: 1px solid #eee
+
+FEEDBACK MESSAGES
+-----------------
+
+Discount Success Message:
+- Color: #27ae60 (green)
+- Margin Top: 10px
+- Font Weight: Bold
+
+Discount Error Message:
+- Color: #e74c3c (red)
+- Margin Top: 10px
+
+Payment Success Message:
+- Display: none (by default)
+- Display: block (on successful payment)
+- Background: #2ecc71 (green)
+- Color: White
+- Padding: 20px
+- Border Radius: 5px
+- Text Align: Center
+- Font Size: 24px
+- Font Weight: Bold
+- Margin Top: 20px
+- Auto-hide: After 3 seconds
+
+ACCESSIBILITY REQUIREMENTS
+--------------------------
+
+Labels:
+- Display: Block
+- Margin Bottom: 5px
+- Font Weight: Bold
+- Color: #555
+- Must be associated with form fields
+
+Required Fields:
+- Marked with asterisk (*)
+- Clear indication of mandatory status
+
+Focus States:
+- Browser default focus indicators maintained
+- No custom focus removal
+
+RESPONSIVE BEHAVIOR
+-------------------
+
+Product Grid:
+- Auto-fit columns with minimum 250px width
+- Responsive to screen size changes
+
+Container:
+- Max width constraint: 1200px
+- Responsive padding and margins
+
+CART DISPLAY SPECIFICATIONS
+---------------------------
+
+Empty Cart State:
+- Message: "Your cart is empty. Add items to get started!"
+
+Cart Item Format:
+- Product name displayed on left
+- Quantity controls and pricing on right
+- Line item total calculated and displayed
+
+Total Price Display:
+- Right-aligned
+- Shows subtotal
+- Shows discount (if applied) in orange text
+- Shows shipping (if Express selected)
+- Shows final total in large green text
+
+Price Format:
+- Always display with 2 decimal places
+- Include dollar sign ($)
+- Example: $199.99
+
+INTERACTION FEEDBACK
+--------------------
+
+Button Hover States:
+- All buttons must have darker hover color
+- Cursor changes to pointer
+- Smooth visual feedback
+
+Form Validation:
+- Real-time feedback on form submission
+- Clear error indication
+- Errors persist until corrected
+
+Cart Updates:
+- Immediate visual update on quantity change
+- Instant total recalculation
+- Smooth transitions
+
+DESIGN PRINCIPLES
+----------------
+
+1. Clarity: All interactive elements clearly identifiable
+2. Feedback: Immediate response to user actions
+3. Consistency: Uniform styling across similar elements
+4. Hierarchy: Clear visual hierarchy with size and color
+5. Simplicity: Clean, uncluttered interface
+6. Accessibility: WCAG-compliant color contrasts

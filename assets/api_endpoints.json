@@ -1,0 +1,265 @@
+{
+  "api_version": "1.0",
+  "base_url": "https://api.eshop.example.com",
+  "endpoints": {
+    "products": {
+      "get_all_products": {
+        "method": "GET",
+        "path": "/products",
+        "description": "Retrieve all available products",
+        "response": {
+          "products": [
+            {
+              "id": "string",
+              "name": "string",
+              "price": "number",
+              "description": "string",
+              "stock": "number"
+            }
+          ]
+        }
+      },
+      "get_product": {
+        "method": "GET",
+        "path": "/products/{id}",
+        "description": "Get details of a specific product",
+        "parameters": {
+          "id": "string (required)"
+        },
+        "response": {
+          "id": "string",
+          "name": "string",
+          "price": "number",
+          "description": "string",
+          "stock": "number"
+        }
+      }
+    },
+    "cart": {
+      "add_to_cart": {
+        "method": "POST",
+        "path": "/cart/add",
+        "description": "Add product to shopping cart",
+        "request_body": {
+          "product_id": "string",
+          "quantity": "number"
+        },
+        "response": {
+          "success": "boolean",
+          "cart_id": "string",
+          "total_items": "number"
+        }
+      },
+      "update_quantity": {
+        "method": "PUT",
+        "path": "/cart/update",
+        "description": "Update product quantity in cart",
+        "request_body": {
+          "cart_id": "string",
+          "product_id": "string",
+          "quantity": "number"
+        },
+        "response": {
+          "success": "boolean",
+          "updated_quantity": "number",
+          "subtotal": "number"
+        }
+      },
+      "get_cart": {
+        "method": "GET",
+        "path": "/cart/{cart_id}",
+        "description": "Retrieve cart contents",
+        "parameters": {
+          "cart_id": "string (required)"
+        },
+        "response": {
+          "cart_id": "string",
+          "items": [
+            {
+              "product_id": "string",
+              "product_name": "string",
+              "quantity": "number",
+              "unit_price": "number",
+              "line_total": "number"
+            }
+          ],
+          "subtotal": "number"
+        }
+      }
+    },
+    "discount": {
+      "apply_coupon": {
+        "method": "POST",
+        "path": "/discount/apply",
+        "description": "Apply discount coupon to cart",
+        "request_body": {
+          "code": "string",
+          "cart_id": "string"
+        },
+        "response": {
+          "success": "boolean",
+          "discount_percentage": "number",
+          "discount_amount": "number",
+          "message": "string"
+        },
+        "valid_codes": {
+          "SAVE15": {
+            "discount": 0.15,
+            "description": "15% off cart subtotal"
+          },
+          "SAVE20": {
+            "discount": 0.20,
+            "description": "20% off cart subtotal"
+          }
+        },
+        "error_responses": {
+          "invalid_code": {
+            "success": false,
+            "message": "Invalid discount code"
+          }
+        }
+      },
+      "validate_coupon": {
+        "method": "GET",
+        "path": "/discount/validate/{code}",
+        "description": "Check if discount code is valid",
+        "parameters": {
+          "code": "string (required)"
+        },
+        "response": {
+          "valid": "boolean",
+          "discount_percentage": "number",
+          "expiry_date": "string"
+        }
+      }
+    },
+    "shipping": {
+      "get_shipping_methods": {
+        "method": "GET",
+        "path": "/shipping/methods",
+        "description": "Retrieve available shipping options",
+        "response": {
+          "methods": [
+            {
+              "id": "standard",
+              "name": "Standard Shipping",
+              "cost": 0,
+              "delivery_days": "5-7"
+            },
+            {
+              "id": "express",
+              "name": "Express Shipping",
+              "cost": 10.00,
+              "delivery_days": "2-3"
+            }
+          ]
+        }
+      },
+      "calculate_shipping": {
+        "method": "POST",
+        "path": "/shipping/calculate",
+        "description": "Calculate shipping cost",
+        "request_body": {
+          "shipping_method": "string",
+          "destination": "string"
+        },
+        "response": {
+          "method": "string",
+          "cost": "number",
+          "estimated_delivery": "string"
+        }
+      }
+    },
+    "order": {
+      "submit_order": {
+        "method": "POST",
+        "path": "/order/submit",
+        "description": "Submit order for processing",
+        "request_body": {
+          "cart_id": "string",
+          "customer": {
+            "name": "string",
+            "email": "string",
+            "address": "string"
+          },
+          "shipping_method": "string",
+          "payment_method": "string",
+          "discount_code": "string (optional)"
+        },
+        "response": {
+          "success": "boolean",
+          "order_id": "string",
+          "total_amount": "number",
+          "estimated_delivery": "string",
+          "message": "Payment Successful!"
+        },
+        "validation_rules": {
+          "name": "Required, non-empty string",
+          "email": "Required, valid email format",
+          "address": "Required, non-empty string",
+          "cart": "Must contain at least one item"
+        }
+      },
+      "get_order_status": {
+        "method": "GET",
+        "path": "/order/{order_id}",
+        "description": "Get order status and details",
+        "parameters": {
+          "order_id": "string (required)"
+        },
+        "response": {
+          "order_id": "string",
+          "status": "string",
+          "items": "array",
+          "total": "number",
+          "tracking_number": "string"
+        }
+      }
+    },
+    "payment": {
+      "process_payment": {
+        "method": "POST",
+        "path": "/payment/process",
+        "description": "Process payment transaction",
+        "request_body": {
+          "order_id": "string",
+          "payment_method": "string",
+          "amount": "number"
+        },
+        "supported_methods": [
+          "credit-card",
+          "paypal"
+        ],
+        "response": {
+          "success": "boolean",
+          "transaction_id": "string",
+          "message": "string"
+        }
+      },
+      "validate_payment": {
+        "method": "POST",
+        "path": "/payment/validate",
+        "description": "Validate payment details before processing",
+        "request_body": {
+          "payment_method": "string",
+          "card_details": "object (if credit card)"
+        },
+        "response": {
+          "valid": "boolean",
+          "errors": "array"
+        }
+      }
+    }
+  },
+  "error_codes": {
+    "400": "Bad Request - Invalid parameters",
+    "401": "Unauthorized - Authentication required",
+    "404": "Not Found - Resource does not exist",
+    "422": "Unprocessable Entity - Validation failed",
+    "500": "Internal Server Error"
+  },
+  "authentication": {
+    "type": "Bearer Token",
+    "header": "Authorization: Bearer {token}"
+  }
+}

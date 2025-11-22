@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+env.bak/
+venv.bak/
+pip-wheel-metadata/
+*.egg-info/
+*.egg
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Project-specific
+db/
+uploads/
+uploaded_assets/
+.streamlit/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# IDE temp files
+*.sublime-project
+*.sublime-workspace
