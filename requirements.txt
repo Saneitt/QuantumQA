@@ -32,6 +32,5 @@ langchain-text-splitters>=0.0.1
 # Environment variable loading
 python-dotenv>=1.0.0
 
-# ML Framework (CPU-optimized for Streamlit Cloud)
-torch>=2.0.0; sys_platform != 'win32'
-torch>=2.0.0; sys_platform == 'win32'
+# Note: torch removed - not required for this app
+# sentence-transformers handles ML inference without explicit torch dependency
