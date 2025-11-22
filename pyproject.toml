@@ -4,12 +4,11 @@ version = "0.1.0"
 description = "Autonomous QA Agent for Test Case and Selenium Script Generation"
 requires-python = ">=3.11,<3.12"
 dependencies = [
-    "openai>=2.8.1",
-    "streamlit>=1.51.0",
+    "google-generativeai>=0.3.0",
+    "streamlit>=1.28.0",
     "trafilatura>=2.0.0",
     "chromadb>=0.4.0",
-    "torch",
-    "sentence-transformers",
+    "sentence-transformers>=2.2.2",
     "langchain>=0.1.0",
     "langchain-text-splitters>=0.0.1",
     "pymupdf>=1.23.0",
@@ -19,12 +18,5 @@ dependencies = [
     "pandas>=2.0.0",
     "pydantic>=2.0.0",
     "markdown>=3.5.0",
+    "python-dotenv>=1.0.0",
 ]
-
-[[tool.uv.index]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-explicit = true
-
-[tool.uv.sources]
-torch = [{ index = "pytorch-cpu" }]
